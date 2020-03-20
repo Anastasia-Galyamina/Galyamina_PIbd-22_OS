@@ -14,7 +14,7 @@ public class Main {
 
 	private static void Implement() {
 		if (quant < 1) {
-			System.out.println("Квант времени меньше 1");
+			System.out.println("РљРІР°РЅС‚ РІСЂРµРјРµРЅРё РјРµРЅСЊС€Рµ 1");
 			return;
 		}
 		while (!Processes.isEmpty()) {
@@ -24,7 +24,7 @@ public class Main {
 					if (!Processes.get(i).isEmpty()) {
 						Processes.get(i).implementThreads();
 					} else {
-						System.out.println("Все потоки " + Processes.get(i).getDescription() + "  выполнены");
+						System.out.println("Р’СЃРµ РїРѕС‚РѕРєРё " + Processes.get(i).getDescription() + "  РІС‹РїРѕР»РЅРµРЅС‹");
 						Processes.remove(i);
 						sizeProcesses = Processes.size();
 						i--;
@@ -36,12 +36,12 @@ public class Main {
 				}
 			}
 		}
-		System.out.println("Все процессы выполнены");
+		System.out.println("Р’СЃРµ РїСЂРѕС†РµСЃСЃС‹ РІС‹РїРѕР»РЅРµРЅС‹");
 	}
 
 	private static void getInfo() {
 		for (int i = 0; i < Processes.size(); i++) {
-			System.out.println(Processes.get(i).getDescription() + " Потоков: " + Processes.get(i).getCount());
+			System.out.println(Processes.get(i).getDescription() + " РџРѕС‚РѕРєРѕРІ: " + Processes.get(i).getCount());
 		}
 		
 		System.out.println();
