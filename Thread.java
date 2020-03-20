@@ -32,19 +32,11 @@ public class Thread {
 	}	
 
 	public boolean needTime() {
-		if (requiredTime > currentTime) {
-			return true;
-		} else {
-			return false;
-		}
+		return requiredTime > currentTime
 	}
 
 	public boolean haveTime() {
-		if (maxTime > currentTime) {
-			return true;
-		} else {
-			return false;
-		}
+		return maxTime > currentTime
 	}
 	public String getInfo() {
 		return description + " maxTime:" + maxTime + " currentTime:" + currentTime + " requiredTime:" + requiredTime;
