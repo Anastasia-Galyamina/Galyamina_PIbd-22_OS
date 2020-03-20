@@ -30,9 +30,7 @@ public class Process {
 	}
 
 	public boolean isEmpty() {
-		if (Threads.size() > 0)
-			return false;
-		return true;
+		return !Threads.size() > 0;
 	}	
 
 	public String getDescription() {
@@ -40,11 +38,7 @@ public class Process {
 	}
 
 	public boolean HaveTime() {
-		if (maxTime > currentTime) {
-			return true;
-		} else {
-			return false;
-		}
+		return maxTime > currentTime;
 	}
 	public void implementThreads() {
 		if (!(maxTime > 0)) {
