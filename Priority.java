@@ -1,8 +1,8 @@
 
 public enum Priority {
-	LOW(1, "Õ»« »…"),
-	MEDIUM(2, "—–≈ƒÕ»…"),
-	HIGH(3, "¬€—Œ »…");
+	LOW(1, "–ù–ò–ó–ö–ò–ô"),
+	MEDIUM(2, "–°–†–ï–î–ù–ò–ô"),
+	HIGH(3, "–í–´–°–û–ö–ò–ô");
 	
 	private int num;
 	private String name;
