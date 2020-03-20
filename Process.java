@@ -6,7 +6,7 @@ public class Process {
 
 	private ArrayList<Thread> Threads;
 
-	private String description = "Процесс ";
+	private String description = "РџСЂРѕС†РµСЃСЃ ";
 	private int maxTime;
 	private int currentTime;		
 	private int threadMaxTime;
@@ -14,7 +14,7 @@ public class Process {
 	
 	public Process(String description, int maxTime, Priority priority) {
 
-		this.description += description + " с приоритетом: " + priority.toString();		
+		this.description += description + " СЃ РїСЂРёРѕСЂРёС‚РµС‚РѕРј: " + priority.toString();		
 		this.maxTime = maxTime * priority.getNum();		
 		Threads = new ArrayList<Thread>();
 		int threadsNumber = rand.nextInt(4) + 1;		
@@ -48,11 +48,11 @@ public class Process {
 	}
 	public void implementThreads() {
 		if (!(maxTime > 0)) {
-			System.out.println("Выделенный квант времени меньше 1");
+			System.out.println("Р’С‹РґРµР»РµРЅРЅС‹Р№ РєРІР°РЅС‚ РІСЂРµРјРµРЅРё РјРµРЅСЊС€Рµ 1");
 			System.exit(0);
 		}
 		System.out.println();
-		System.out.println(getDescription() + "  Время макс: " + maxTime);		
+		System.out.println(getDescription() + "  Р’СЂРµРјСЏ РјР°РєСЃ: " + maxTime);		
 		int currentThreadsCount = Threads.size();	
 			
 		for (int curThreadNum = 0; curThreadNum < currentThreadsCount; curThreadNum++) {			
@@ -63,11 +63,11 @@ public class Process {
 						currentTime++;
 					}
 					else {
-						System.out.println("Максимальное время " + getDescription() + " истекло");						
+						System.out.println("РњР°РєСЃРёРјР°Р»СЊРЅРѕРµ РІСЂРµРјСЏ " + getDescription() + " РёСЃС‚РµРєР»Рѕ");						
 						break;
 					}
 				}				
-				System.out.println(thread.getDescription() + " завершен");				
+				System.out.println(thread.getDescription() + " Р·Р°РІРµСЂС€РµРЅ");				
 				Threads.remove(curThreadNum);
 				currentThreadsCount --;
 		}
