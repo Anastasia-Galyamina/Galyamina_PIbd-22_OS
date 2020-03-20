@@ -1,6 +1,6 @@
 
 public class Thread {
-	private String description = "Поток ";
+	private String description = "РџРѕС‚РѕРє ";
 	private int maxTime;
 	private int currentTime = 0;
 	private int requiredTime;
