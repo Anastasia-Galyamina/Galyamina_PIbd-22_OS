@@ -52,6 +52,31 @@ public class Main {
 		for (int i = 0; i < rand.nextInt(5) + 3; i++) {
 			Processes.add(new Process("" + i, quant, Priority.values()[rand.nextInt(3)]));
 		}
+		public void implementThreads() {
+		if (!(maxTime > 0)) {
+			System.out.println("Выделенный квант времени меньше 1");
+			System.exit(0);
+		}
+		System.out.println();
+		System.out.println(getDescription() + "  Время макс: " + maxTime);		
+		int currentThreadsCount = Threads.size();	
+			
+		for (int curThreadNum = 0; curThreadNum < currentThreadsCount; curThreadNum++) {			
+			Thread thread = Threads.get(curThreadNum);			
+			while (thread.needTime()) {
+					if(thread.haveTime()) {
+						thread.executeThread();		
+						currentTime++;
+					}
+					else {
+						System.out.println("Максимальное время " + getDescription() + " истекло");						
+						break;
+					}
+				}				
+				System.out.println(thread.getDescription() + " завершен");				
+				Threads.remove(curThreadNum);
+				currentThreadsCount --;
+		}
 	}
 }
 
