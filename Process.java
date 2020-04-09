@@ -7,8 +7,8 @@ public class Process {
 	private ArrayList<Thread> Threads;
 
 	private String description = "Процесс ";
-	private int maxTime;
-	private int currentTime;		
+	public int maxTime;
+	public int currentTime;		
 	private int threadMaxTime;
 	
 	
