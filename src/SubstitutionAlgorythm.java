@@ -1,7 +1,7 @@
 import java.util.ArrayList;
 
 public class SubstitutionAlgorythm {
-	// алгоритм часы	
+	// Р°Р»РіРѕСЂРёС‚Рј С‡Р°СЃС‹	
 	ArrayList<Record> Table;
 	PhysicalMemory physicalMemory;
 	
@@ -9,32 +9,33 @@ public class SubstitutionAlgorythm {
 		this.Table = Table;
 		this.physicalMemory = physicalMemory;
 	}
-	// проходим по таблице
+	// РїСЂРѕС…РѕРґРёРј РїРѕ С‚Р°Р±Р»РёС†Рµ
 	public void start() {
 		for(int i = 0; i< Table.size(); i++) {
 			int number = Table.get(i).getNumberOfPhysicalPage();
-			//если признак обращения сброшен, то страница выгружается
+			//РµСЃР»Рё РїСЂРёР·РЅР°Рє РѕР±СЂР°С‰РµРЅРёСЏ СЃР±СЂРѕС€РµРЅ, С‚Рѕ СЃС‚СЂР°РЅРёС†Р° РІС‹РіСЂСѓР¶Р°РµС‚СЃСЏ
 			if(Table.get(i).r() == false && Table.get(i).isInPhysicalMemory()) {				
-				// если страница не была изменена, то просто удаляем
+				// РµСЃР»Рё СЃС‚СЂР°РЅРёС†Р° РЅРµ Р±С‹Р»Р° РёР·РјРµРЅРµРЅР°, С‚Рѕ РїСЂРѕСЃС‚Рѕ СѓРґР°Р»СЏРµРј
 				if(Table.get(i).isModified() == false) {
-					System.out.println("Страница № " + Table.get(i).getPageNumber() + 
-							"удалена из памяти, так признак обращения сброшен и страница не была модифицирована");
+					System.out.println("РЎС‚СЂР°РЅРёС†Р° в„– " + Table.get(i).getPageNumber() + 
+							"СѓРґР°Р»РµРЅР° РёР· РїР°РјСЏС‚Рё, С‚Р°Рє РїСЂРёР·РЅР°Рє РѕР±СЂР°С‰РµРЅРёСЏ СЃР±СЂРѕС€РµРЅ Рё СЃС‚СЂР°РЅРёС†Р° РЅРµ Р±С‹Р»Р° РјРѕРґРёС„РёС†РёСЂРѕРІР°РЅР°");
 					physicalMemory.removePage(number);
 				}
 				else {
-					//если страница была изменена, то выгружаем на диск
-					System.out.println("Страница № " + Table.get(i).getPageNumber() + "выгружена на диск,"
-						+ " так как признак обращения сброшен");
+					//РµСЃР»Рё СЃС‚СЂР°РЅРёС†Р° Р±С‹Р»Р° РёР·РјРµРЅРµРЅР°, С‚Рѕ РІС‹РіСЂСѓР¶Р°РµРј РЅР° РґРёСЃРє
+					System.out.println("РЎС‚СЂР°РЅРёС†Р° в„– " + Table.get(i).getPageNumber() + "РІС‹РіСЂСѓР¶РµРЅР° РЅР° РґРёСЃРє,"
+						+ " С‚Р°Рє РєР°Рє РїСЂРёР·РЅР°Рє РѕР±СЂР°С‰РµРЅРёСЏ СЃР±СЂРѕС€РµРЅ");
 					physicalMemory.sendPageToDisk(number);
 				}		
-				//делаем запись в таблице, что страница не отображена на физическую память
+				//РґРµР»Р°РµРј Р·Р°РїРёСЃСЊ РІ С‚Р°Р±Р»РёС†Рµ, С‡С‚Рѕ СЃС‚СЂР°РЅРёС†Р° РЅРµ РѕС‚РѕР±СЂР°Р¶РµРЅР° РЅР° С„РёР·РёС‡РµСЃРєСѓСЋ РїР°РјСЏС‚СЊ
 				Table.get(i).removeFromPhysicalMemory();
 				Table.get(i).setNumberOfPhysicalPage(-1);
+				break;
 			}
 			else {
-				//если признак обращения установлен, то он сбрасывается
+				//РµСЃР»Рё РїСЂРёР·РЅР°Рє РѕР±СЂР°С‰РµРЅРёСЏ СѓСЃС‚Р°РЅРѕРІР»РµРЅ, С‚Рѕ РѕРЅ СЃР±СЂР°СЃС‹РІР°РµС‚СЃСЏ
 				Table.get(i).r(false);
-				System.out.println("Страница № " + Table.get(i).getPageNumber() + "признак обращения сброшен");
+				System.out.println("РЎС‚СЂР°РЅРёС†Р° в„– " + Table.get(i).getPageNumber() + "РїСЂРёР·РЅР°Рє РѕР±СЂР°С‰РµРЅРёСЏ СЃР±СЂРѕС€РµРЅ");
 			}
 				
 		}
