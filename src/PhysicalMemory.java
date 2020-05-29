@@ -6,7 +6,7 @@ public class PhysicalMemory {
 	private int sizePaintSectors;
 	private int[] place;
 	private int startSelectedFile;
-	private ArrayList<Record> tables= new ArrayList<Record>();
+	private ArrayList<Record> table= new ArrayList<Record>();
 	
 	public PhysicalMemory() {		
 		this.sizePaintSectors = (int) Math.sqrt(Double.parseDouble(sizeDisc/sizeSector+""));
@@ -14,7 +14,7 @@ public class PhysicalMemory {
 	}	
 
 	public int allocateMemoryForFile(File file) {
-		tables.add(new Record(file,file.getStartInMem()));
+		table.add(new Record(file,file.getStartInMem()));
 		int size = file.getSize();
 		int countSectors=size/sizeSector;
 		int startNewFile = -1;
