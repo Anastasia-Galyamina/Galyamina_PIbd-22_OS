@@ -12,6 +12,26 @@ public class PhysicalMemory {
 		this.sizePaintSectors = (int) Math.sqrt(Double.parseDouble(sizeDisc/sizeSector+""));
 		place = new int[sizeDisc/sizeSector];	
 	}	
+	
+	public ArrayList<Integer> getFileClusters(File file)
+	{
+		ArrayList<Integer> list= new ArrayList<Integer>();
+		int start = -1;
+		for(int i = 0; i < table.size(); i ++)
+		{
+			if(table.get(i).getFile() == file)
+			{
+				start = table.get(i).getStartFile();
+				break;
+			}
+		}
+		while(start != -1)
+		{
+			list.add(start);
+			start = place[start];
+		}
+		return list;
+	}
 
 	public int allocateMemoryForFile(File file) {
 		table.add(new Record(file,file.getStartInMem()));
@@ -42,9 +62,9 @@ public class PhysicalMemory {
 	
 	public void clearMemory(File file) {
 		
-		for (Record cellTable : tables) {
+		for (Record cellTable : table) {
 			if(file == cellTable.getFile()) {
-				tables.remove(cellTable);
+				table.remove(cellTable);
 				break;
 			}
 		}
@@ -101,12 +121,12 @@ public class PhysicalMemory {
 
 
 	public ArrayList<Record> getTables() {
-		return tables;
+		return table;
 	}
 
 
 	public void setTables(ArrayList<Record> tables) {
-		this.tables = tables;
+		this.table = tables;
 	}
 	
 	public int getCell(int i) {
