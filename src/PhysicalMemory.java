@@ -24,11 +24,12 @@ public class PhysicalMemory {
 	{
 		ArrayList<Integer> list= new ArrayList<Integer>();
 		int start = file.getStartInMem();		
-		while(start != -1)
+		while(place[start] != -1)
 		{
 			list.add(start);
 			start = place[start];
 		}
+		list.add(start);
 		return list;
 	}
 
