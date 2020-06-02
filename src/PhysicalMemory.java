@@ -23,15 +23,7 @@ public class PhysicalMemory {
 	public ArrayList<Integer> getFileClusters(File file)
 	{
 		ArrayList<Integer> list= new ArrayList<Integer>();
-		int start = -1;
-		for(int i = 0; i < table.size(); i ++)
-		{
-			if(table.get(i).getFile() == file)
-			{
-				start = table.get(i).getStartFile();
-				break;
-			}
-		}
+		int start = file.getStartInMem();		
 		while(start != -1)
 		{
 			list.add(start);
@@ -70,7 +62,7 @@ public class PhysicalMemory {
 	public void clearMemory(File file) {
 		
 		ArrayList<Integer> list = getFileClusters(file);
-		System.out.print("Освободили кластеры: ");
+		System.out.print("ГЋГ±ГўГ®ГЎГ®Г¤ГЁГ«ГЁ ГЄГ«Г Г±ГІГҐГ°Г»: ");
 		for(int i = 0; i < list.size(); i++) {
 			System.out.print(i);
 			place[i] = 0;
